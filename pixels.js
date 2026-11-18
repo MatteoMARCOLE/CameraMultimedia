@@ -5,3 +5,17 @@
 //                       video, pastille, sortie, perf
 // Les filtres sont dans l'objet Filtres (fichier filtres.js, chargé avant celui-ci).
 
+
+const $ = (id) => document.getElementById(id);
+
+const video = $("video");
+
+$("camera").addEventListener("click", async () => {
+    const flux = await navigator.mediaDevices.getUserMedia({
+        video: { width: 640, height: 480 },
+        audio: false
+    });
+
+    video.srcObject = flux;
+    await video.play();
+});

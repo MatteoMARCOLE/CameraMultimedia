@@ -1,0 +1,92 @@
+/* Feuille de style commune à tous les TDs */
+:root {
+  --fond: #f6f5f2;
+  --texte: #1d1d1f;
+  --accent: #2f6fdb;
+  --discret: #6b6b70;
+  --cadre: #d8d6d0;
+}
+
+* { box-sizing: border-box; }
+
+/* L'attribut hidden doit l'emporter sur les display définis plus bas */
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fond);
+  color: var(--texte);
+  line-height: 1.45;
+}
+
+h1 { font-size: 1.5rem; margin: 0 0 4px; }
+h2 { font-size: 1.1rem; margin: 24px 0 8px; }
+p.consigne { color: var(--discret); margin: 0 0 16px; max-width: 70ch; }
+
+button, select, input[type="file"] {
+  font: inherit;
+  padding: 6px 12px;
+  border: 1px solid var(--cadre);
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}
+button.principal { background: var(--accent); color: white; border-color: var(--accent); }
+button:disabled { opacity: .5; cursor: default; }
+
+.barre { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0; }
+
+canvas, video, svg {
+  display: block;
+  max-width: 100%;
+  background: #111;
+  border-radius: 8px;
+}
+
+.mesure {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: .9rem;
+  color: var(--discret);
+}
+
+label { display: inline-flex; gap: 6px; align-items: center; }
+
+a { color: var(--accent); }
+
+/* ---- Mise en page du TD 3 ---- */
+.cote-a-cote {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cote-a-cote figure { margin: 0; }
+
+.cote-a-cote video,
+.cote-a-cote canvas {
+  width: 480px;
+  height: 360px;
+  object-fit: contain;
+}
+
+#video { cursor: crosshair; }
+
+figcaption {
+  font-size: .85rem;
+  color: var(--discret);
+  margin-top: 4px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#pastille {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid #999;
+  background: rgb(0, 255, 0);
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>TD3 : filtres vidéo en JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>TD 3 : traiter la vidéo pixel par pixel</h1>
+  <p class="consigne">
+    La webcam (ou un fichier vidéo) est copiée dans un canvas à chaque nouvelle image
+    grâce à <code>requestVideoFrameCallback</code>, puis traitée avec
+    <code>getImageData</code> / <code>putImageData</code>.
+    Pour l'incrustation, cliquez sur la vidéo source pour choisir la couleur à rendre transparente.
+  </p>
+
+  <div class="barre">
+    <button id="camera" class="principal">Webcam</button>
+    <input id="fichier" type="file" accept="video/*">
+    <label>Filtre
+      <select id="filtre">
+        <option value="aucun">aucun</option>
+        <option value="gris">niveaux de gris</option>
+        <option value="negatif">négatif</option>
+        <option value="seuil">seuil (noir et blanc)</option>
+        <option value="retro">rétro (monochrome entrelacé)</option>
+        <option value="pixel">pixelisation</option>
+        <option value="mouvement">détection de mouvement</option>
+        <option value="incrustation">incrustation (chroma key)</option>
+      </select>
+    </label>
+    <label>Paramètre <input id="param" type="range" min="0" max="255" value="100"></label>
+    <span id="valParam" class="mesure">100</span>
+    <input id="fond" type="file" accept="image/*" title="Image de fond pour l'incrustation">
+  </div>
+
+  <div class="cote-a-cote">
+    <figure>
+      <video id="video" playsinline muted loop></video>
+      <figcaption>Source <span id="pastille"></span></figcaption>
+    </figure>
+    <figure>
+      <canvas id="sortie" width="640" height="480"></canvas>
+      <figcaption>Résultat</figcaption>
+    </figure>
+  </div>
+  <p class="mesure" id="perf">–</p>
+
+  <script src="filtres.js"></script>
+  <script src="pixels.js"></script>
+</body>
+</html>
